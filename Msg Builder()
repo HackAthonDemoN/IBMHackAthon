@@ -1,0 +1,21 @@
+
+var countp = context.get('countp')||0;
+var countn = context.get('countn')||0;
+if (msg.payload.top_class == "positive") {
+   countp++;
+   }
+else if (msg.payload.top_class == "negative") {
+   countn++;
+   }
+else {
+       msg.payload="neutral ";
+}
+
+msg.payload="Positive "+countp+"\nNegative "+countn;
+
+context.set('countp',countp);
+msg.countp = countp;
+context.set('countn',countn);
+msg.countn = countn;
+
+return msg;
